@@ -1,5 +1,6 @@
 --- 
 import '../styles/global.css';
+import Footer from '../components/Footer.astro';
 ---
 <!doctype html>
 <html lang="en">
@@ -11,7 +12,8 @@ import '../styles/global.css';
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
 	</head>
-	<body>
+	<body class="bg-[#0a1b1b]">
 		<slot />
+		<Footer />
 	</body>
 </html>
