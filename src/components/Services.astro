@@ -1,0 +1,122 @@
+---
+const services = [
+  { 
+    id: 0, 
+    title: 'Atención telefónica las 24/7', 
+    icon: '🎧', 
+    desc: 'Soporte 24/7 para todas sus necesidades de llamadas entrantes y salientes, asegurando que ninguna consulta quede sin respuesta.',
+    src: 'https://images.unsplash.com/photo-1596524430615-b46294d1334c?q=80&w=800'
+  },
+  { 
+    id: 1,
+    title: 'Soporte en Vivo', 
+    icon: '💬', 
+    desc: 'Atención inmediata a través de chat en vivo para resolver dudas de sus clientes en tiempo real con calidez profesional.', 
+    src: 'https://images.unsplash.com/photo-1596524430615-b46294d1334c?q=80&w=800' 
+  },
+  { 
+    id: 2,
+    title: 'Generación de leads', 
+    icon: '📈', 
+    desc: 'Estrategias efectivas para captar clientes potenciales y expandir su base de datos de manera constante y cualificada.', 
+    src: 'https://images.unsplash.com/photo-1596524430615-b46294d1334c?q=80&w=800' 
+  },
+  { 
+    id: 3,
+    title: 'Personal Profesional', 
+    icon: '👥', 
+    desc: 'Contamos con personal altamente capacitado para representar su marca con los más altos estándares de excelencia.', 
+    src: 'https://images.unsplash.com/photo-1596524430615-b46294d1334c?q=80&w=800' 
+  }
+];
+---
+
+<section class="py-20 px-6 bg-[#0a1b1b]">
+  <div class="max-w-6xl mx-auto">
+    <!-- Encabezado -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-[#142e2e] text-lime-400 text-sm border border-[#1f4646] mb-4">
+        Nuestros Servicios
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-white">Contamos con los mejores expertos<br/> para elevar su negocio</h2>
+    </div>
+
+    <!-- Tarjeta Principal -->
+    <div class="bg-[#142e2e]/40 rounded-3xl p-8 md:p-10 border border-slate-700/50 mb-8 flex flex-col md:flex-row gap-8 items-center transition-all duration-500" id="service-card">
+      <div class="flex-1 space-y-6">
+        <div id="active-icon" class="text-4xl bg-lime-400 w-16 h-16 rounded-2xl flex items-center justify-center">🎧</div>
+        <h3 id="active-title" class="text-3xl font-bold text-white">24/7 Call Handling</h3>
+        <p id="active-desc" class="text-slate-400 text-lg leading-relaxed">Soporte 24/7 para todas sus necesidades de llamadas entrantes y salientes, asegurando que ninguna consulta quede sin respuesta.</p>
+        <button class="bg-lime-400 text-black px-8 py-3 rounded-full font-bold hover:bg-lime-300 transition flex items-center gap-2">
+          Saber más <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17l9.206-9.206m0 0v8.25m0-8.25h-8.25" /></svg>
+        </button>
+      </div>
+      <div class="w-full md:w-1/2 h-72 rounded-3xl overflow-hidden border-4 border-[#0a1b1b] shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1713946598501-d6b32e7c2464?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Servicio" class="w-full h-full object-cover" />
+      </div>
+    </div>
+
+    <!-- Barra de progreso y selectores -->
+    <div class="space-y-6">
+      <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+        <div id="progress-bar" class="h-full bg-lime-400 w-0 transition-all duration-[3000ms] linear"></div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {services.map((s, i) => (
+          <button 
+            onclick={`manualSelect(${i})`} 
+            class="service-tab flex items-center gap-3 p-4 rounded-2xl bg-slate-900 border border-slate-700 text-white transition-all duration-300"
+          >
+            <span class="text-2xl">{s.icon}</span> <span class="font-bold">{s.title}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ services }}>
+  let currentIndex = 0;
+  const progressBar = document.getElementById('progress-bar');
+  const title = document.getElementById('active-title');
+  const desc = document.getElementById('active-desc');
+  const icon = document.getElementById('active-icon');
+  const buttons = document.querySelectorAll('.service-tab');
+
+  function updateDisplay(index) {
+    const s = services[index];
+    title.innerText = s.title;
+    desc.innerText = s.desc;
+    icon.innerText = s.icon;
+    
+    // Resetear barra
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '0%';
+    setTimeout(() => { 
+        progressBar.style.transition = 'width 3000ms linear';
+        progressBar.style.width = '100%'; 
+    }, 50);
+
+    // Resaltar botón activo
+    buttons.forEach((btn, i) => {
+      if (i === index) {
+        btn.classList.add('border-lime-400', 'bg-slate-800', 'shadow-[0_0_15px_rgba(163,230,53,0.3)]');
+      } else {
+        btn.classList.remove('border-lime-400', 'bg-slate-800', 'shadow-[0_0_15px_rgba(163,230,53,0.3)]');
+      }
+    });
+  }
+
+  function manualSelect(index) {
+    currentIndex = index;
+    updateDisplay(index);
+  }
+
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % services.length;
+    updateDisplay(currentIndex);
+  }, 3000);
+
+  // Inicializar
+  updateDisplay(0);
+</script>
