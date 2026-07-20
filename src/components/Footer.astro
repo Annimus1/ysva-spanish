@@ -1,0 +1,62 @@
+---
+const CompnayName = "YSVA";
+---
+
+<footer class="bg-[#0a1b1b] text-slate-400 py-16 px-6 border-t border-slate-800">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    
+    <!-- Branding -->
+    <div class="space-y-6">
+      <div class="flex items-center gap-2 text-white font-bold text-2xl">
+        <div class="w-8 h-8 bg-lime-400 rounded-lg"></div>
+        {CompnayName}
+      </div>
+      <p class="leading-relaxed">
+        Brindamos los mejores servicios tecnológicos expertos para satisfacer sus necesidades únicas.
+      </p>
+      <div class="flex gap-3">
+        {['fb', 'in', 'yt', 'x'].map(social => (
+          <button class="w-10 h-10 rounded-full bg-[#142e2e] flex items-center justify-center hover:bg-lime-400 hover:text-[#0a1b1b] transition">
+            {social}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 class="text-white font-bold text-lg mb-6">Enlaces Rápidos</h4>
+      <ul class="space-y-4">
+        {['Sobre Nosotros', 'Soluciones TI', 'Nuestro Blog', 'Planes', 'Contacto'].map(link => (
+          <li><a href="#" class="hover:text-lime-400 transition font-bold">{link}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Our Services -->
+    <div>
+      <h4 class="text-white font-bold text-lg mb-6">Nuestros Servicios</h4>
+      <ul class="space-y-4">
+        {['Ciberseguridad', 'Soluciones Cloud', 'Protección de Datos', 'Optimización', 'Desarrollo SW'].map(service => (
+          <li><a href="#" class="hover:text-lime-400 transition font-bold">{service}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Contact Us -->
+    <div>
+      <h4 class="text-white font-bold text-lg mb-6">Contáctenos</h4>
+      <ul class="space-y-4">
+        <li class="flex items-center gap-3">📞 +1 123 456 7890</li>
+        <li class="flex items-center gap-3">📍 Av. Principal, México 4233</li>
+        <li class="flex items-center gap-3">✉️ contacto@etech.com</li>
+        <li class="flex items-center gap-3">🌐 etechsolution.com</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-800 text-center">
+    <p>© Copyright 2026 - {CompnayName}. Todos los derechos reservados.</p>
+  </div>
+</footer>
