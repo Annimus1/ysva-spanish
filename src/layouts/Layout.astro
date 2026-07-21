@@ -11,6 +11,12 @@ import Footer from '../components/Footer.astro';
 		<link rel="icon" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
+		<style>
+			html{
+				scroll-behavior: smooth;
+				scroll-padding-top: 4rem;
+			}
+		</style>
 	</head>
 	<body class="">
 		<slot />

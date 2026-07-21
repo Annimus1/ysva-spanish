@@ -12,14 +12,17 @@ const logoPlaceholder = "YSVA";
 
     <!-- Menú Desktop -->
     <div class="hidden md:flex items-center gap-8 text-slate-200 font-medium">
-      {['Inicio', 'Nosotros', 'Soluciones TI', 'Blog', 'Páginas'].map(item => (
-        <a href="#" class="hover:text-lime-400 transition-colors duration-300 font-bold text-2xl">{item}</a>
-      ))}
+      <a href="#hero" class="text-white font-bold text-lg">Inicio</a>
+      <a href="#elegirnos" class="text-white font-bold text-lg">Por qué elegirnos</a>
+      <a href="#comoLoHacemos" class="text-white font-bold text-lg">Cómo lo hacemos</a>
+      <a href="#servicios" class="text-white font-bold text-lg">Servicios</a>
+      <a href="#testimonios" class="text-white font-bold text-lg">Testimonios</a>
+      <a href="#equipo" class="text-white font-bold text-lg">Equipo</a>
     </div>
 
     <!-- Acciones CTA -->
     <div class="hidden md:flex items-center gap-3">
-      <button class="bg-lime-400 text-black px-6 py-2 rounded-full font-bold hover:bg-lime-300 transition text-xl">Contacto</button>
+      <a href="#cta" class="bg-lime-400 text-black px-6 py-2 rounded-full font-bold hover:bg-lime-300 transition text-xl">Contacto</a>
     </div>
 
     <!-- Botón Hamburguesa (Móvil) -->
@@ -32,18 +35,19 @@ const logoPlaceholder = "YSVA";
 
   <!-- Menú Mobile (Desplegable) -->
   <div id="mobile-menu" class="hidden absolute top-full mt-2 left-0 w-full bg-slate-900/95 backdrop-blur-lg border border-slate-700/50 rounded-3xl p-6 flex-col gap-4 text-center md:hidden">
-    <a href="#" class="text-white font-bold text-lg">Inicio</a>
-    <a href="#" class="text-white font-bold text-lg">Nosotros</a>
-    <a href="#" class="text-white font-bold text-lg">Soluciones TI</a>
-    <a href="#" class="text-white font-bold text-lg">Blog</a>
-    <button class="bg-lime-400 text-black py-3 rounded-full font-bold">Contacto</button>
+    <a href="#hero" class="text-white font-bold text-lg">Inicio</a>
+    <a href="#elegirnos" class="text-white font-bold text-lg">Por qué elegirnos</a>
+    <a href="#comoLoHacemos" class="text-white font-bold text-lg">Cómo lo hacemos</a>
+    <a href="#servicios" class="text-white font-bold text-lg">Servicios</a>
+    <a href="#testimonios" class="text-white font-bold text-lg">Testimonios</a>
+    <a href="#equipo" class="text-white font-bold text-lg">Equipo</a>
+    <a href="#cta" class="bg-lime-400 text-black py-3 rounded-full font-bold">Contacto</a>
   </div>
 </nav>
 
 <script>
   const btn = document.getElementById('menu-btn');
   const menu = document.getElementById('mobile-menu');
-
   btn?.addEventListener('click', () => {
     menu?.classList.toggle('hidden');
     menu?.classList.toggle('flex');
