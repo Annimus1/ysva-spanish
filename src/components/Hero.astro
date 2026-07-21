@@ -19,7 +19,7 @@ const stats = [
         Crea tu proyecto soñado con nosotros
       </span>
       
-      <h1 class="text-4xl md:text-6xl xl:text-7xl font-bold text-white leading-tight tracking-tight">
+      <h1 class="text-4xl md:text-6xl xl:text-7xl font-bold text-[#0a1b1b] leading-tight tracking-tight">
         Experiencia en soluciones de <br class="hidden lg:block"> <span class="text-lime-400">Call Center BPO</span>
       </h1>
       
@@ -31,7 +31,7 @@ const stats = [
       <div class="grid grid-cols-3 gap-4 pt-6 border-t border-[#1f4646]">
         {stats.map(stat => (
           <div>
-            <div class="text-2xl md:text-4xl font-bold text-white tabular-nums">{stat.value}</div>
+            <div class="text-2xl md:text-4xl font-bold text-[#0a1b1b] tabular-nums">{stat.value}</div>
             <div class="text-slate-500 text-xs md:text-sm mt-1">{stat.label}</div>
           </div>
         ))}
@@ -49,12 +49,12 @@ const stats = [
     <div class="lg:col-span-5 relative h-[400px] md:h-[650px] w-full flex justify-center items-center">
       
       <!-- Imagen 1: Agente con tablet -->
-      <div class="absolute top-0 left-[10%] md:left-0 w-[200px] md:w-[380px] h-[250px] md:h-[480px] rounded-t-full rounded-b-3xl overflow-hidden border-[8px] border-[#0a1b1b] shadow-2xl z-10">
+      <div class="absolute top-0 left-[10%] md:left-0 w-[200px] md:w-[380px] h-[250px] md:h-[480px] rounded-t-full rounded-b-3xl overflow-hidden border-[8px] border-lime-400 shadow-2xl z-10">
         <img src="https://images.unsplash.com/photo-1714079761488-e0c9b9ac4138?q=80&w=1171" alt="Agente" class="w-full h-full object-cover" />
       </div>
       
       <!-- Imagen 2: Teleoperadora sonriendo -->
-      <div class="absolute bottom-0 right-[10%] md:right-0 w-[180px] md:w-[320px] h-[220px] md:h-[420px] rounded-t-full rounded-b-3xl overflow-hidden border-[8px] border-[#0a1b1b] shadow-2xl z-20">
+      <div class="absolute bottom-0 right-[10%] md:right-0 w-[180px] md:w-[320px] h-[220px] md:h-[420px] rounded-t-full rounded-b-3xl overflow-hidden border-[8px] border-lime-400 shadow-2xl z-20">
         <img src="https://images.unsplash.com/photo-1711397818306-863530cd27c2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dmlydHVhbCUyMHNlcnZpY2VzfGVufDB8fDB8fHww" alt="Teleoperadora" class="w-full h-full object-cover" />
       </div>
     </div>
