@@ -6,13 +6,13 @@ import Carousel_Item_3 from './Carousel_Item_3.astro';
 
 <section id="elegirnos" class="py-16 md:py-20 md:px-6 bg-[#0a1b1b]">
   <!-- Contenedor principal relativo para que los botones absolutos se posicionen respecto a él -->
-  <div id="indicators-carousel" class="relative w-full max-w-7xl mx-auto pb-8">
+  <div id="indicators-carousel" class="relative w-full max-w-7xl mx-auto pb-8 select-none">
       
-      <!-- Carousel wrapper -->
-      <div class="relative w-full overflow-hidden px-2 md:px-12">
+      <!-- Carousel wrapper con eventos táctiles añadidos -->
+      <div id="carousel-wrapper" class="relative w-full overflow-hidden px-2 md:px-12 cursor-grab active:cursor-grabbing">
           
           <!-- Item 1 -->
-          <div class="item active w-full transition-all duration-500 ease-in-out" data-carousel="1">
+          <div class="item active w-full" data-carousel="1">
               <div class="text-center">
                 <div class="inline-flex items-center text-xl md:text-2xl gap-2 py-1 px-4 rounded-full bg-[#142e2e] text-lime-400 border border-[#1f4646]">
                   ¿Por qué elegirnos?
@@ -24,7 +24,7 @@ import Carousel_Item_3 from './Carousel_Item_3.astro';
           </div>
 
           <!-- Item 2 -->
-          <div class="item hidden w-full transition-all duration-500 ease-in-out text-white text-center" data-carousel="2">
+          <div class="item hidden w-full text-white text-center" data-carousel="2">
               <div class="text-center">
                 <div class="inline-flex items-center text-xl md:text-2xl gap-2 py-1 px-4 rounded-full bg-[#142e2e] text-lime-400 border border-[#1f4646]">
                   ¿Por qué elegirnos?
@@ -36,7 +36,7 @@ import Carousel_Item_3 from './Carousel_Item_3.astro';
           </div>
           
           <!-- Item 3 -->
-          <div class="item hidden w-full transition-all duration-500 ease-in-out text-white text-center" data-carousel="3">
+          <div class="item hidden w-full text-white text-center" data-carousel="3">
               <div class="text-center">
                 <div class="inline-flex items-center text-xl md:text-2xl gap-2 py-1 px-4 rounded-full bg-[#142e2e] text-lime-400 border border-[#1f4646]">
                   Testimonios
@@ -78,14 +78,32 @@ import Carousel_Item_3 from './Carousel_Item_3.astro';
 </section>
 
 <style>
+  /* --- Animaciones de Desplazamiento Lateral --- */
+  @keyframes outToLeft {
+    to { opacity: 0; transform: translateX(-40px); }
+  }
+  @keyframes outToRight {
+    to { opacity: 0; transform: translateX(40px); }
+  }
+  @keyframes inFromRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes inFromLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .animate-outToLeft { animation: outToLeft 0.35s forwards ease-in-out; }
+  .animate-outToRight { animation: outToRight 0.35s forwards ease-in-out; }
+  .animate-inFromRight { animation: inFromRight 0.35s forwards ease-in-out; }
+  .animate-inFromLeft { animation: inFromLeft 0.35s forwards ease-in-out; }
+
   .item {
     display: none;
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out;
   }
   .item.active {
     display: block;
-    opacity: 1;
   }
 </style>
 
@@ -94,32 +112,46 @@ import Carousel_Item_3 from './Carousel_Item_3.astro';
   const prevBtn = document.getElementById("prev");
   const items = document.querySelectorAll(".item");
   const indicators = document.querySelectorAll(".indicator");
+  const wrapper = document.getElementById("carousel-wrapper");
   
   let currentIndex = 0;
   const totalItems = items.length;
   let isAnimating = false;
 
-  function updateCarousel(newIndex: number) {
+  // Variables para gestos táctiles (Swipe)
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const minSwipeDistance = 40;
+
+  function updateCarousel(newIndex: number, direction: 'next' | 'prev') {
     if (isAnimating) return;
     isAnimating = true;
 
     const currentItem = items[currentIndex];
     const nextItem = items[newIndex];
 
-    currentItem.classList.remove('active');
-    currentItem.classList.add('hidden');
+    const outClass = direction === 'next' ? 'animate-outToLeft' : 'animate-outToRight';
+    const inClass = direction === 'next' ? 'animate-inFromRight' : 'animate-inFromLeft';
 
+    // 1. Salida del elemento actual
+    currentItem.classList.add(outClass);
+    
+    // 2. Preparar el siguiente elemento
     nextItem.classList.remove('hidden');
-    setTimeout(() => {
-      nextItem.classList.add('active');
-    }, 10);
+    nextItem.classList.add('active', inClass);
 
     updateIndicators(newIndex);
-    currentIndex = newIndex;
-    
+
+    // 3. Limpiar clases al terminar la animación (350ms)
     setTimeout(() => {
+      currentItem.classList.remove('active', outClass);
+      currentItem.classList.add('hidden');
+      
+      nextItem.classList.remove(inClass);
+      
+      currentIndex = newIndex;
       isAnimating = false;
-    }, 400);
+    }, 350);
   }
 
   function updateIndicators(index: number) {
@@ -138,19 +170,45 @@ import Carousel_Item_3 from './Carousel_Item_3.astro';
 
   nextBtn?.addEventListener("click", () => {
     const newIndex = (currentIndex + 1) % totalItems;
-    updateCarousel(newIndex);
+    updateCarousel(newIndex, 'next');
   });
 
   prevBtn?.addEventListener("click", () => {
     const newIndex = (currentIndex - 1 + totalItems) % totalItems;
-    updateCarousel(newIndex);
+    updateCarousel(newIndex, 'prev');
   });
 
   indicators.forEach((indicator, index) => {
     indicator.addEventListener("click", () => {
       if (index !== currentIndex) {
-        updateCarousel(index);
+        const direction = index > currentIndex ? 'next' : 'prev';
+        updateCarousel(index, direction);
       }
     });
   });
+
+  // --- Soporte táctil con la misma animación ---
+  wrapper?.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  wrapper?.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const distance = touchEndX - touchStartX;
+    if (Math.abs(distance) < minSwipeDistance) return;
+
+    if (distance < 0) {
+      // Deslizó hacia la izquierda -> Siguiente (efecto 'next')
+      const newIndex = (currentIndex + 1) % totalItems;
+      updateCarousel(newIndex, 'next');
+    } else {
+      // Deslizó hacia la derecha -> Anterior (efecto 'prev')
+      const newIndex = (currentIndex - 1 + totalItems) % totalItems;
+      updateCarousel(newIndex, 'prev');
+    }
+  }
 </script>
