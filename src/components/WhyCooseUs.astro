@@ -4,111 +4,88 @@ import Carousel_Item_2 from './Carousel_Item_2.astro';
 import Carousel_Item_3 from './Carousel_Item_3.astro';
 ---
 
-<section id="elegirnos" class="py-20 md:px-6 bg-[#0a1b1b] min-h-screen">
-  <div id="indicators-carousel" class="relative w-full min-h-[100vh] md:min-h-screen ">
+<section id="elegirnos" class="py-16 md:py-20 px-4 md:px-6 bg-[#0a1b1b]">
+  <!-- Contenedor principal relativo para que los botones absolutos se posicionen respecto a él -->
+  <div id="indicators-carousel" class="relative w-full max-w-7xl mx-auto pb-8">
+      
       <!-- Carousel wrapper -->
-      <div class="relative min-h-[100vh] overflow-hidden rounded-base md:h-screen">
+      <div class="relative w-full overflow-hidden px-2 md:px-12">
+          
           <!-- Item 1 -->
-          <div class="item active relative md:absolute md:inset-0 z-20 transition-all duration-500 ease-in-out" data-carousel="1">
+          <div class="item active w-full transition-all duration-500 ease-in-out" data-carousel="1">
               <div class="text-center">
-                <div class="inline-flex items-center text-2xl gap-2 py-1 px-4 rounded-full bg-[#142e2e] text-lime-400 border border-[#1f4646]">
+                <div class="inline-flex items-center text-xl md:text-2xl gap-2 py-1 px-4 rounded-full bg-[#142e2e] text-lime-400 border border-[#1f4646]">
                   ¿Por qué elegirnos?
                 </div>
               </div>
-              <div class="relative w-full px-4">
+              <div class="w-full mt-4">
                 <Carousel_Item_1 />
               </div>
           </div>
 
           <!-- Item 2 -->
-          <div class="item relative md:absolute md:inset-0 hidden transition-all duration-500 ease-in-out text-white mx-auto text-center" data-carousel="2">
+          <div class="item hidden w-full transition-all duration-500 ease-in-out text-white text-center" data-carousel="2">
               <div class="text-center">
-                <div class="inline-flex items-center text-2xl gap-2 py-1 px-4 rounded-full bg-[#142e2e] text-lime-400 border border-[#1f4646]">
+                <div class="inline-flex items-center text-xl md:text-2xl gap-2 py-1 px-4 rounded-full bg-[#142e2e] text-lime-400 border border-[#1f4646]">
                   ¿Por qué elegirnos?
                 </div>
               </div>
-              <div class="relative w-full px-4">
+              <div class="w-full mt-4">
                 <Carousel_Item_2 />
               </div>
           </div>
           
           <!-- Item 3 -->
-          <div class="item relative md:absolute md:inset-0 hidden transition-all duration-500 ease-in-out text-white mx-auto text-center" data-carousel="3">
+          <div class="item hidden w-full transition-all duration-500 ease-in-out text-white text-center" data-carousel="3">
               <div class="text-center">
-                <div class="inline-flex items-center text-2xl gap-2 py-1 px-4 rounded-full bg-[#142e2e] text-lime-400 border border-[#1f4646]">
-                  ¿Por qué elegirnos?
+                <div class="inline-flex items-center text-xl md:text-2xl gap-2 py-1 px-4 rounded-full bg-[#142e2e] text-lime-400 border border-[#1f4646]">
+                  Testimonios
                 </div>
               </div>
-              <div class="relative w-full px-4">
+              <div class="w-full mt-4">
                 <Carousel_Item_3 />
               </div>
           </div>
       </div>
 
-      <!-- Slider indicators -->
-      <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse -bottom-12 left-1/2 pb-4">
+      <!-- Slider controls (Absolutos, centrados verticalmente a los costados) -->
+      <button id="prev" type="button" class="absolute top-1/2 -translate-y-1/2 left-0 z-30 flex items-center justify-center p-2 cursor-pointer group focus:outline-none">
+          <span class="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800/80 border border-slate-700/50 group-hover:bg-lime-400 transition-all duration-300 shadow-lg">
+              <svg class="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/></svg>
+          </span>
+      </button>
+
+      <button id="next" type="button" class="absolute top-1/2 -translate-y-1/2 right-0 z-30 flex items-center justify-center p-2 cursor-pointer group focus:outline-none">
+          <span class="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800/80 border border-slate-700/50 group-hover:bg-lime-400 transition-all duration-300 shadow-lg">
+              <svg class="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/></svg>
+          </span>
+      </button>
+
+      <!-- Slider indicators (Debajo del contenido pero dentro del wrapper principal) -->
+      <div class="flex justify-center space-x-3 mt-8">
           <button type="button" class="indicator w-3 h-3 rounded-full bg-lime-400 transition-colors duration-300" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
           <button type="button" class="indicator w-3 h-3 rounded-full bg-gray-700 transition-colors duration-300" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
           <button type="button" class="indicator w-3 h-3 rounded-full bg-gray-700 transition-colors duration-300" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
       </div>
-      
-      <!-- Slider controls -->
-      <button id="prev" type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
-          <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-700/50 group-hover:bg-lime-400 transition-all duration-300">
-              <svg class="w-6 h-6 text-white group-hover:text-black rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/></svg>
-          </span>
-      </button>
-      <button id="next" type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
-          <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-700/50 group-hover:bg-lime-400 transition-all duration-300">
-              <svg class="w-6 h-6 text-white group-hover:text-black rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/></svg>
-          </span>
-      </button>
+
   </div>
 
-  <div class="text-center mt-16">
-    <a href="#cta" class="bg-lime-400 text-[#0a1b1b] font-bold py-3 px-8 rounded-full hover:bg-lime-300 transition duration-300 shadow-lg">
+  <div class="text-center mt-12">
+    <a href="#cta" class="inline-block bg-lime-400 text-[#0a1b1b] font-bold py-3 px-8 rounded-full hover:bg-lime-300 transition duration-300 shadow-lg text-sm sm:text-base">
       Contrata tu asistente virtual hoy
     </a>
   </div>
 </section>
 
 <style>
-  /* --- Animaciones de Salida (ocultar actual) --- */
-  
-  /* Sale hacia la izquierda (se usa al avanzar) */
-  @keyframes outToLeft {
-    to { opacity: 0; transform: translateX(-50px); }
-  }
-  /* Sale hacia la derecha (se usa al retroceder) */
-  @keyframes outToRight {
-    to { opacity: 0; transform: translateX(50px); }
-  }
-
-  /* --- Animaciones de Entrada (mostrar nuevo) --- */
-
-  /* Entra desde la derecha (se usa al avanzar) */
-  @keyframes inFromRight {
-    from { opacity: 0; transform: translateX(50px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  /* Entra desde la izquierda (se usa al retroceder) */
-  @keyframes inFromLeft {
-    from { opacity: 0; transform: translateX(-50px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-
-  /* Clases de utilidad para JS */
-  .animate-outToLeft { animation: outToLeft 0.4s forwards ease-in-out; }
-  .animate-outToRight { animation: outToRight 0.4s forwards ease-in-out; }
-  .animate-inFromRight { animation: inFromRight 0.4s forwards ease-in-out; }
-  .animate-inFromLeft { animation: inFromLeft 0.4s forwards ease-in-out; }
-
-  /* Asegurar que los items estén apilados correctamente */
   .item {
-    display: none; /* Por defecto ocultos */
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
   }
   .item.active {
-    display: block; /* Solo el activo se muestra */
+    display: block;
+    opacity: 1;
   }
 </style>
 
@@ -120,48 +97,32 @@ import Carousel_Item_3 from './Carousel_Item_3.astro';
   
   let currentIndex = 0;
   const totalItems = items.length;
-  let isAnimating = false; // Prevenir clicks rápidos
+  let isAnimating = false;
 
-  function updateCarousel(newIndex, direction) {
+  function updateCarousel(newIndex: number) {
     if (isAnimating) return;
     isAnimating = true;
 
     const currentItem = items[currentIndex];
     const nextItem = items[newIndex];
 
-    // Seleccionar animaciones correctas según la dirección
-    const outClass = direction === 'next' ? 'animate-outToLeft' : 'animate-outToRight';
-    const inClass = direction === 'next' ? 'animate-inFromRight' : 'animate-inFromLeft';
+    currentItem.classList.remove('active');
+    currentItem.classList.add('hidden');
 
-    // 1. Iniciar animación de salida
-    currentItem.classList.add(outClass);
-    
-    // Preparar el siguiente elemento (lo hacemos bloque para que ocupe espacio)
     nextItem.classList.remove('hidden');
-    nextItem.classList.add('active');
-
-    // Forzar un reflow para reiniciar animaciones si es necesario (opcional, recomendado en casos complejos)
-    // void nextItem.offsetWidth; 
-
-    // 2. Iniciar animación de entrada
-    nextItem.classList.add(inClass);
-
-    // Actualizar indicadores visualmente de inmediato
-    updateIndicators(newIndex);
-
-    // 3. Limpiar clases después de que termine la animación (400ms)
     setTimeout(() => {
-      currentItem.classList.remove('active', outClass);
-      currentItem.classList.add('hidden');
-      
-      nextItem.classList.remove(inClass);
-      
-      currentIndex = newIndex;
+      nextItem.classList.add('active');
+    }, 10);
+
+    updateIndicators(newIndex);
+    currentIndex = newIndex;
+    
+    setTimeout(() => {
       isAnimating = false;
-    }, 400); 
+    }, 400);
   }
 
-  function updateIndicators(index) {
+  function updateIndicators(index: number) {
     indicators.forEach((ind, idx) => {
       if (idx === index) {
         ind.classList.remove('bg-gray-700');
@@ -175,27 +136,20 @@ import Carousel_Item_3 from './Carousel_Item_3.astro';
     });
   }
 
-  // Evento Botón Siguiente
   nextBtn?.addEventListener("click", () => {
     const newIndex = (currentIndex + 1) % totalItems;
-    updateCarousel(newIndex, 'next');
+    updateCarousel(newIndex);
   });
 
-  // Evento Botón Anterior
   prevBtn?.addEventListener("click", () => {
     const newIndex = (currentIndex - 1 + totalItems) % totalItems;
-    updateCarousel(newIndex, 'prev');
+    updateCarousel(newIndex);
   });
 
-  // Evento Click en Indicadores (Puntos)
-  // Nota: Los indicadores siempre avanzan o retroceden secuencialmente
-  // para mantener la lógica de dirección. Si quieres salto directo, la dirección
-  // dependerá de si newIndex > currentIndex.
   indicators.forEach((indicator, index) => {
     indicator.addEventListener("click", () => {
       if (index !== currentIndex) {
-        const direction = index > currentIndex ? 'next' : 'prev';
-        updateCarousel(index, direction);
+        updateCarousel(index);
       }
     });
   });
