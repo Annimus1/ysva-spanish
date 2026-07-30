@@ -1,21 +1,24 @@
 ---
 const testimonials = [
   {
-    name: "Sheldon Jackson",
-    role: "Propietario de tienda",
-    text: "Hemos trabajado con YSVA por más de dos años, su atención al cliente 24/7 ha sido un cambio radical para nosotros. Manejan nuestras llamadas entrantes con profesionalismo.",
-    img: "https://i.pravatar.cc/150?u=1"
-  },
-  {
     name: "Maria Rodriguez",
-    role: "Directora de Operaciones",
-    text: "La eficiencia del equipo de soporte es incomparable. Han logrado escalar nuestras operaciones de manera efectiva y sin fricciones.",
-    img: "https://i.pravatar.cc/150?u=2"
+    role: "Propietaria de E-commerce",
+    title: "Más de 20 horas libres a la semana",
+    text: "Tener una asistente virtual dedicada ha liberado más de 20 horas a la semana de mi tiempo. Gestiona el chat de la tienda y la agenda sin que yo deba preocuparme.",
+    img: "https://i.pravatar.cc/150?u=6"
   },
   {
     name: "Carlos Mendez",
+    role: "Director de Operaciones",
+    title: "Integración inmediata y sin fricciones",
+    text: "La integración de las asistentes virtuales de YSVA en nuestro flujo diario fue inmediata. Manejan correos y llamadas con un profesionalismo impecable.",
+    img: "https://i.pravatar.cc/150?u=2"
+  },
+  {
+    name: "Génesis Lopez",
     role: "Gerente de Ventas",
-    text: "Excelente trato y una capacidad técnica destacable. Estamos muy satisfechos con los resultados obtenidos hasta la fecha.",
+    title: "Aumento drástico en la conversión",
+    text: "El filtrado de leads y la atención de llamadas entrantes mejoraron drásticamente nuestra tasa de conversión. Un servicio indispensable.",
     img: "https://i.pravatar.cc/150?u=3"
   }
 ];
@@ -27,28 +30,28 @@ const testimonials = [
       <div class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-[#142e2e] text-lime-400 text-sm border border-[#1f4646] mb-4">
         Testimonios
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold text-[#0a1b1b]">Lo que dicen nuestros clientes</h2>
+      <h2 class="text-4xl md:text-5xl font-bold text-[#0a1b1b]">Lo que dicen nuestros clientes sobre nuestras Asistentes Virtuales</h2>
     </div>
 
     <div class="grid lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-5 rounded-3xl overflow-hidden h-[400px]">
-        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=800" class="w-full h-full object-cover" alt="Equipo trabajando" />
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=800" class="w-full h-full object-cover" alt="Asistente virtual trabajando" />
       </div>
 
-      <div class="lg:col-span-7 flex items-center gap-8">
+      <div class="lg:col-span-7 flex flex-col md:flex-row items-center gap-8">
         
-        <!-- Componente con efecto de barrido de luz (Example-2) -->
-        <div class="example-2 relative rounded-[2rem] overflow-hidden bg-[#142e2e] flex-1">
+        <!-- Componente con efecto de barrido de luz -->
+        <div class="example-2 relative rounded-[2rem] overflow-hidden bg-[#142e2e] flex-1 w-full">
           <div class="before-light"></div>
           
           <div class="inner relative z-10 p-8">
             <div id="test-card" class="transition-opacity duration-300">
               <div class="text-lime-400 mb-4 text-xl">★★★★★</div>
-              <h3 class="text-white font-bold text-2xl mb-4">Servicio destacado y soporte 24/7</h3>
+              <h3 id="test-title" class="text-white font-bold text-2xl mb-4">{testimonials[0].title}</h3>
               <p id="test-text" class="text-slate-400 text-lg mb-8 leading-relaxed italic">"{testimonials[0].text}"</p>
               
               <div class="flex items-center gap-4">
-                <img id="test-img" src={testimonials[0].img} class="w-12 h-12 rounded-full border-2 border-lime-400" />
+                <img id="test-img" src={testimonials[0].img} class="w-12 h-12 rounded-full border-2 border-lime-400 object-cover" alt="Cliente" />
                 <div>
                   <div id="test-name" class="text-white font-bold">{testimonials[0].name}</div>
                   <div id="test-role" class="text-slate-500 text-sm">{testimonials[0].role}</div>
@@ -59,10 +62,14 @@ const testimonials = [
         </div>
 
         <!-- Sidebar de avatares -->
-        <div class="flex flex-col gap-4">
-          {testimonials.map((t) => (
-            <button class="avatar-btn w-12 h-12 rounded-full overflow-hidden border-2 border-transparent hover:border-lime-400 transition shadow-lg">
-              <img src={t.img} class="w-full h-full object-cover" />
+        <div class="flex md:flex-col flex-row gap-4">
+          {testimonials.map((t, index) => (
+            <button 
+              class={`avatar-btn w-12 h-12 rounded-full overflow-hidden border-2 transition shadow-lg ${index === 0 ? 'border-lime-400 scale-105' : 'border-transparent opacity-70 hover:opacity-100 hover:border-lime-400'}`}
+              data-index={index}
+              aria-label={`Ver testimonio de ${t.name}`}
+            >
+              <img src={t.img} class="w-full h-full object-cover" alt={t.name} />
             </button>
           ))}
         </div>
@@ -115,12 +122,13 @@ const testimonials = [
 
 <script>
   const testimonials = [
-    { name: "Sheldon Jackson", role: "Propietario de tienda", text: "Hemos trabajado con YSVA por más de dos años, su atención al cliente 24/7 ha sido un cambio radical para nosotros. Manejan nuestras llamadas entrantes con profesionalismo.", img: "https://i.pravatar.cc/150?u=1" },
-    { name: "Maria Rodriguez", role: "Directora de Operaciones", text: "La eficiencia del equipo de soporte es incomparable. Han logrado escalar nuestras operaciones de manera efectiva y sin fricciones.", img: "https://i.pravatar.cc/150?u=2" },
-    { name: "Carlos Mendez", role: "Gerente de Ventas", text: "Excelente trato y una capacidad técnica destacable. Estamos muy satisfechos con los resultados obtenidos hasta la fecha.", img: "https://i.pravatar.cc/150?u=3" }
+    { name: "Maria Rodriguez", role: "Propietaria de E-commerce", title: "Más de 20 horas libres a la semana", text: "Tener una asistente virtual dedicada ha liberado más de 20 horas a la semana de mi tiempo. Gestiona el chat de la tienda y la agenda sin que yo deba preocuparme.", img: "https://i.pravatar.cc/150?u=6" },
+    { name: "Carlos Mendez", role: "Director de Operaciones", title: "Integración inmediata y sin fricciones", text: "La integración de las asistentes virtuales de YSVA en nuestro flujo diario fue inmediata. Manejan correos y llamadas con un profesionalismo impecable.", img: "https://i.pravatar.cc/150?u=2" },
+    { name: "Génesis Lopez", role: "Gerente de Ventas", title: "Aumento drástico en la conversión", text: "El filtrado de leads y la atención de llamadas entrantes mejoraron drásticamente nuestra tasa de conversión. Un servicio indispensable.", img: "https://i.pravatar.cc/150?u=3" }
   ];
 
   const card = document.getElementById('test-card');
+  const title = document.getElementById('test-title');
   const text = document.getElementById('test-text');
   const name = document.getElementById('test-name');
   const role = document.getElementById('test-role');
@@ -130,14 +138,27 @@ const testimonials = [
   buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
       const t = testimonials[index];
-      card.style.opacity = '0';
-      setTimeout(() => {
-        text.innerText = `"${t.text}"`;
-        name.innerText = t.name;
-        role.innerText = t.role;
-        img.src = t.img;
-        card.style.opacity = '1';
-      }, 300);
+      
+      // Actualizar clases activas en los avatares
+      buttons.forEach(btn => {
+        btn.classList.remove('border-lime-400', 'scale-105');
+        btn.classList.add('border-transparent', 'opacity-70');
+      });
+      button.classList.remove('border-transparent', 'opacity-70');
+      button.classList.add('border-lime-400', 'scale-105');
+
+      // Transición suave de la tarjeta
+      if (card) {
+        card.style.opacity = '0';
+        setTimeout(() => {
+          if (title) title.innerText = t.title;
+          if (text) text.innerText = `"${t.text}"`;
+          if (name) name.innerText = t.name;
+          if (role) role.innerText = t.role;
+          if (img) (img as HTMLImageElement).src = t.img;
+          card.style.opacity = '1';
+        }, 300);
+      }
     });
   });
 </script>
