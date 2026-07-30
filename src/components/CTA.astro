@@ -1,3 +1,7 @@
+---
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyVtbDJmlr8a-P77wEadIgc8U2pIKjqh_UOEEanKijCOjiHj94JCxJAE4f2bUlFg7BNHw/exec";
+---
+
 <section id="cta" class="py-16 px-6 bg-lime-400">
   <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
     
@@ -11,10 +15,11 @@
       </p>
 
       <!-- Formulario de Contacto / Cotización -->
-      <form class="bg-white p-6 rounded-3xl shadow-2xl max-w-lg space-y-4 border border-white/50">
+      <form id="lead-form" class="bg-white p-6 rounded-3xl shadow-2xl max-w-lg space-y-4 border border-white/50">
         <div>
           <label class="block text-xs font-bold text-[#0a1b1b] uppercase mb-1">Nombre de la empresa</label>
           <input 
+            id="empresa"
             type="text" 
             placeholder="Ej. Mi Empresa S.A." 
             required
@@ -26,6 +31,7 @@
           <div>
             <label class="block text-xs font-bold text-[#0a1b1b] uppercase mb-1">Correo electrónico</label>
             <input 
+              id="correo"
               type="email" 
               placeholder="correo@empresa.com" 
               required
@@ -35,8 +41,24 @@
           <div>
             <label class="block text-xs font-bold text-[#0a1b1b] uppercase mb-1">Teléfono</label>
             <input 
+              id="telefono"
               type="tel" 
               placeholder="+34 600 000 000" 
+              required
+              class="w-full bg-slate-100 px-4 py-3 rounded-xl outline-none text-[#0a1b1b] placeholder-slate-400 border border-transparent focus:border-lime-500 transition"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-[#0a1b1b] uppercase mb-1">Numero de asistentes</label>
+            <input 
+              id="asistentes"
+              type="number"
+              min="1"
+              max="10" 
+              value="1"
               required
               class="w-full bg-slate-100 px-4 py-3 rounded-xl outline-none text-[#0a1b1b] placeholder-slate-400 border border-transparent focus:border-lime-500 transition"
             />
@@ -46,14 +68,19 @@
         <div>
           <label class="block text-xs font-bold text-[#0a1b1b] uppercase mb-1">Nota o comentario</label>
           <textarea 
+            id="comentario"
             rows="3" 
             placeholder="Cuéntanos qué tareas necesitas delegar..." 
             class="w-full bg-slate-100 px-4 py-3 rounded-xl outline-none text-[#0a1b1b] placeholder-slate-400 border border-transparent focus:border-lime-500 transition resize-none"
           ></textarea>
         </div>
 
-        <button type="submit" class="w-full bg-[#0a1b1b] text-white px-6 py-4 rounded-xl font-bold hover:bg-slate-800 transition flex items-center justify-center gap-2 shadow-lg">
-          Solicitar Asistente Virtual <span class="text-lime-400">↗</span>
+        <button 
+          id="submit-btn"
+          type="submit" 
+          class="w-full bg-[#0a1b1b] text-white px-6 py-4 rounded-xl font-bold hover:bg-slate-800 transition flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+        >
+          <span id="btn-text">Solicitar Asistente Virtual</span> <span class="text-lime-400">↗</span>
         </button>
       </form>
     </div>
@@ -81,3 +108,44 @@
     </div>
   </div>
 </section>
+
+<script define:vars={{ SCRIPT_URL }}>
+  const form = document.getElementById("lead-form");
+  const submitBtn = document.getElementById("submit-btn");
+  const btnText = document.getElementById("btn-text");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Cambiar estado a cargando
+    submitBtn.disabled = true;
+    btnText.textContent = "Enviando...";
+
+    const formData = {
+      empresa: document.getElementById("empresa").value,
+      correo: document.getElementById("correo").value,
+      telefono: document.getElementById("telefono").value,
+      asistentes: document.getElementById("asistentes").value,
+      comentario: document.getElementById("comentario").value,
+    };
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      alert("¡Solicitud enviada con éxito! Nos pondremos en contacto pronto.");
+      form.reset();
+    } catch (error) {
+      console.error("Error al enviar:", error);
+      alert("Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.");
+    } finally {
+      submitBtn.disabled = false;
+      btnText.textContent = "Solicitar Asistente Virtual";
+    }
+  });
+</script>
