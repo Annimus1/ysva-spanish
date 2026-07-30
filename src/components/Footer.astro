@@ -1,5 +1,5 @@
 ---
-const CompnayName = "YSVA";
+const CompnayName = "YourserviceVA";
 ---
 
 <footer class="text-slate-400 py-16 px-6">
@@ -14,42 +14,32 @@ const CompnayName = "YSVA";
         Brindamos los mejores servicios tecnológicos expertos para satisfacer sus necesidades únicas.
       </p>
       <div class="flex gap-3">
-        {['fb', 'in', 'yt', 'x'].map(social => (
-          <button class="w-10 h-10 rounded-full bg-[#142e2e] flex items-center justify-center hover:bg-lime-400 hover:text-[#0a1b1b] transition">
-            {social}
-          </button>
-        ))}
+        <a href="https://www.facebook.com/profile.php?id=61556250137883" target="_blank" class="w-10 h-10 rounded-full bg-[#142e2e] flex items-center justify-center hover:cursor-pointer hover:bg-lime-400 hover:text-[#0a1b1b] transition">
+            FB
+        </a>
+        <a href="https://www.youtube.com/@YourserviceVA" target="_blank" class="w-10 h-10 rounded-full bg-[#142e2e] flex items-center justify-center hover:cursor-pointer hover:bg-lime-400 hover:text-[#0a1b1b] transition">
+            YT
+        </a>
+        <a href="https://www.instagram.com/your_serviceva/" target="_blank" class="w-10 h-10 rounded-full bg-[#142e2e] flex items-center justify-center hover:cursor-pointer hover:bg-lime-400 hover:text-[#0a1b1b] transition">
+            IG
+        </a>
       </div>
-    </div>
-
-    <!-- Quick Links -->
-    <div>
-      <h4 class="text-white font-bold text-lg mb-6">Enlaces Rápidos</h4>
-      <ul class="space-y-4">
-        {['Sobre Nosotros', 'Soluciones TI', 'Nuestro Blog', 'Planes', 'Contacto'].map(link => (
-          <li><a href="#" class="hover:text-lime-400 transition font-bold">{link}</a></li>
-        ))}
-      </ul>
     </div>
 
     <!-- Our Services -->
     <div>
-      <h4 class="text-white font-bold text-lg mb-6">Nuestros Servicios</h4>
       <ul class="space-y-4">
-        {['Ciberseguridad', 'Soluciones Cloud', 'Protección de Datos', 'Optimización', 'Desarrollo SW'].map(service => (
-          <li><a href="#" class="hover:text-lime-400 transition font-bold">{service}</a></li>
-        ))}
+      <li><a href="#hero" class="hover:text-lime-400 transition font-bold">Inicio</a></li>
+      <li><a href="#elegirnos" class="hover:text-lime-400 transition font-bold">Por qué elegirnos</a></li>
+      <li><a href="#comoLoHacemos" class="hover:text-lime-400 transition font-bold">Cómo lo hacemos</a></li>
       </ul>
     </div>
 
-    <!-- Contact Us -->
     <div>
-      <h4 class="text-white font-bold text-lg mb-6">Contáctenos</h4>
       <ul class="space-y-4">
-        <li class="flex items-center gap-3">📞 +1 123 456 7890</li>
-        <li class="flex items-center gap-3">📍 Av. Principal, México 4233</li>
-        <li class="flex items-center gap-3">✉️ contacto@etech.com</li>
-        <li class="flex items-center gap-3">🌐 etechsolution.com</li>
+      <li><a href="#servicios" class="hover:text-lime-400 transition font-bold">Servicios</a></li>
+      <li><a href="#testimonios" class="hover:text-lime-400 transition font-bold">Testimonios</a></li>
+      <li><a href="#equipo" class="hover:text-lime-400 transition font-bold">Equipo</a></li>
       </ul>
     </div>
   </div>
