@@ -1,25 +1,32 @@
 ---
 const testimonials = [
   {
-    name: "Maria Rodriguez",
-    role: "Propietaria de E-commerce",
-    title: "Mejora en la productividad",
-    text: "La gestión de la agenda y el soporte a clientes escaló a otro nivel desde que incorporamos el servicio. Totalmente recomendados.",
-    img: "https://i.pravatar.cc/150?u=6"
+    quote: "Dejar la gestión de portales inmobiliarios y leads en manos de mi asistente me devolvió las horas que necesitaba para cerrar más ventas.",
+    name: "Carlos M.",
+    role: "Director Inmobiliario",
+    title: "Más tiempo para cerrar ventas",
+    img: "https://i.pravatar.cc/150?u=elena"
   },
   {
-    name: "Carlos Mendez",
-    role: "Director de Operaciones",
-    title: "Aumento drástico en la conversión",
-    text: "Pudimos delegar toda la facturación y el seguimiento administrativo sin preocuparnos por contratos complejos ni costes fijos innecesarios.",
-    img: "https://i.pravatar.cc/150?u=2"
+    quote: "La atención por WhatsApp y la agenda de la clínica fluyen sin errores. Cero complicaciones con bajas o seguros sociales.",
+    name: "Dra. Elena R.",
+    role: "Centro de Psicología",
+    title: "Gestión clínica sin errores",
+    img: "https://i.pravatar.cc/150?u=sofia"
   },
   {
-    name: "Génesis Lopez",
-    role: "Gerente de Ventas",
-    title: "Integración inmediata y sin fricciones",
-    text: "El profesional se acopló a nuestras herramientas de trabajo en cuestión de horas. La productividad del equipo aumentó notablemente.",
-    img: "https://i.pravatar.cc/150?u=3"
+    quote: "Delegar la atención al cliente y la gestión de devoluciones en mi e-commerce mejoró por completo la satisfacción de nuestros compradores.",
+    name: "Javier S.",
+    role: "Fundador de E-commerce",
+    title: "Mejora en la satisfacción del cliente",
+    img: "https://i.pravatar.cc/150?u=javier"
+  },
+  {
+    quote: "La integración fue inmediata y sin fricciones. Ahora puedo enfocarme en liderar mi negocio sin quemarme con tareas repetitivas.",
+    name: "Sofía L.",
+    role: "Creadora de Contenido",
+    title: "Sin tareas repetitivas",
+    img: "https://i.pravatar.cc/150?u=carlos"
   }
 ];
 ---
@@ -48,7 +55,7 @@ const testimonials = [
             <div id="test-card" class="transition-opacity duration-300">
               <div class="text-lime-400 mb-4 text-xl">★★★★★</div>
               <h3 id="test-title" class="text-white font-bold text-2xl mb-4">{testimonials[0].title}</h3>
-              <p id="test-text" class="text-slate-400 text-lg mb-8 leading-relaxed italic">"{testimonials[0].text}"</p>
+              <p id="test-text" class="text-slate-400 text-lg mb-8 leading-relaxed italic">"{testimonials[0].quote}"</p>
               
               <div class="flex items-center gap-4">
                 <img id="test-img" src={testimonials[0].img} class="w-12 h-12 rounded-full border-2 border-lime-400 object-cover" alt="Cliente" />
@@ -122,9 +129,10 @@ const testimonials = [
 
 <script>
   const testimonials = [
-    { name: "Maria Rodriguez", role: "Propietaria de E-commerce", title: "Mejora en la productividad",text: "La gestión de la agenda y el soporte a clientes escaló a otro nivel desde que incorporamos el servicio. Totalmente recomendados.", img: "https://i.pravatar.cc/150?u=6" },
-    { name: "Carlos Mendez", role: "Director de Operaciones", title: "Aumento drástico en la conversión",text: "Pudimos delegar toda la facturación y el seguimiento administrativo sin preocuparnos por contratos complejos ni costes fijos innecesarios.", img: "https://i.pravatar.cc/150?u=2" },
-    { name: "Génesis Lopez", role: "Gerente de Ventas", title: "Integración inmediata y sin fricciones", text: "El profesional se acopló a nuestras herramientas de trabajo en cuestión de horas. La productividad del equipo aumentó notablemente.", img: "https://i.pravatar.cc/150?u=3" }
+    { quote: "Dejar la gestión de portales inmobiliarios y leads en manos de mi asistente me devolvió las horas que necesitaba para cerrar más ventas.", name: "Carlos M.", role: "Director Inmobiliario", title: "Más tiempo para cerrar ventas", img: "https://i.pravatar.cc/150?u=elena" },
+    { quote: "La atención por WhatsApp y la agenda de la clínica fluyen sin errores. Cero complicaciones con bajas o seguros sociales.", name: "Dra. Elena R.", role: "Centro de Psicología", title: "Gestión clínica sin errores", img: "https://i.pravatar.cc/150?u=sofia" },
+    { quote: "Delegar la atención al cliente y la gestión de devoluciones en mi e-commerce mejoró por completo la satisfacción de nuestros compradores.", name: "Javier S.", role: "Fundador de E-commerce", title: "Mejora en la satisfacción del cliente", img: "https://i.pravatar.cc/150?u=javier" },
+    { quote: "La integración fue inmediata y sin fricciones. Ahora puedo enfocarme en liderar mi negocio sin quemarme con tareas repetitivas.", name: "Sofía L.", role: "Creadora de Contenido", title: "Sin tareas repetitivas", img: "https://i.pravatar.cc/150?u=carlos" }
   ];
 
   const card = document.getElementById('test-card');
@@ -152,7 +160,7 @@ const testimonials = [
         card.style.opacity = '0';
         setTimeout(() => {
           if (title) title.innerText = t.title;
-          if (text) text.innerText = `"${t.text}"`;
+          if (text) text.innerText = `"${t.quote}"`;
           if (name) name.innerText = t.name;
           if (role) role.innerText = t.role;
           if (img) (img as HTMLImageElement).src = t.img;
