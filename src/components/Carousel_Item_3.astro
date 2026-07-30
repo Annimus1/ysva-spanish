@@ -1,0 +1,70 @@
+---
+const testimonios = [
+  {
+    quote: "Dejar la gestión de portales inmobiliarios y leads en manos de mi asistente me devolvió las horas que necesitaba para cerrar más ventas.",
+    author: "Carlos M.",
+    role: "Director Inmobiliario",
+    initials: "CM",
+    avatar: "https://i.pravatar.cc/150?u=elena"
+  },
+  {
+    quote: "La atención por WhatsApp y la agenda de la clínica fluyen sin errores. Cero complicaciones con bajas o seguros sociales.",
+    author: "Dra. Elena R.",
+    role: "Centro de Psicología",
+    initials: "ER",
+    avatar: "https://i.pravatar.cc/150?u=sofia"
+  },
+  {
+    quote: "Delegar la atención al cliente y la gestión de devoluciones en mi e-commerce mejoró por completo la satisfacción de nuestros compradores.",
+    author: "Javier S.",
+    role: "Fundador de E-commerce",
+    initials: "JS",
+    avatar: "https://i.pravatar.cc/150?u=javier"
+  },
+  {
+    quote: "La integración fue inmediata y sin fricciones. Ahora puedo enfocarme en liderar mi negocio sin quemarme con tareas repetitivas.",
+    author: "Sofía L.",
+    role: "Creadora de Contenido",
+    initials: "SL",
+    avatar: "https://i.pravatar.cc/150?u=carlos"
+  }
+];
+---
+
+<div id="testimonios" class="py-12 px-4 md:px-8 bg-[#0a1b1b] w-full">
+  <div class="w-full max-w-7xl mx-auto bg-[#142e2e]/40 rounded-3xl md:rounded-[2rem] p-6 sm:p-8 md:p-12 border border-slate-700/40 shadow-2xl">
+    
+    <!-- Cabecera -->
+    <div class="text-center mb-8 md:mb-10 max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl text-lime-400 font-semibold uppercase tracking-wider mb-3 md:mb-4">
+        Lo que dicen nuestros clientes
+      </h2>
+      <p class="text-slate-100 text-base sm:text-lg md:text-xl font-medium leading-relaxed">
+        Descubre cómo nuestros asistentes virtuales han transformado la operativa diaria de diferentes negocios.
+      </p>
+    </div>
+
+    <!-- Tarjetas de Testimonios (Grid 2x2) usando bucle -->
+    <div class="grid md:grid-cols-2 gap-6 mb-4">
+      {testimonios.map((item) => (
+        <div class="bg-[#0a1b1b]/90 p-6 md:p-8 rounded-2xl border border-slate-700/50 flex flex-col justify-between shadow-lg">
+          <p class="text-slate-300 text-base sm:text-lg italic leading-relaxed mb-6">
+            "{item.quote}"
+          </p>
+          <div class="flex items-center gap-4">
+            <!-- Avatar con espacio reservado e iniciales de respaldo -->
+            <div class="relative w-12 h-12 rounded-full bg-lime-400/10 border-2 border-lime-400/40 overflow-hidden flex items-center justify-center text-lime-400 shrink-0">
+              <span class="text-sm font-bold absolute">{item.initials}</span>
+              <img src={item.avatar} alt={item.author} class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'" />
+            </div>
+            <div>
+              <p class="text-lime-400 font-bold text-lg">{item.author}</p>
+              <p class="text-slate-400 text-sm">{item.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</div>

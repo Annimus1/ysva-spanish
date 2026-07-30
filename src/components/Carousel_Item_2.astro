@@ -1,0 +1,63 @@
+---
+const sectores = [
+  {
+    title: "Inmobiliarias",
+    description: "Gestión de portales (Idealista/Fotocasa), agenda de visitas y filtrado exhaustivo de leads.",
+    svgPath: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+  },
+  {
+    title: "Psicólogos / Clínicas",
+    description: "Gestión de citas, atención a pacientes por WhatsApp y control de facturación.",
+    svgPath: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+  },
+  {
+    title: "Creators / E-commerce",
+    description: "Atención al cliente, gestión de devoluciones y moderación activa de comunidades.",
+    svgPath: "M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+  }
+];
+---
+
+<div id="especializacion-nicho" class="py-12 px-4 sm:px-6 bg-[#0a1b1b] w-full">
+  <div class="w-full max-w-7xl mx-auto bg-[#142e2e]/40 rounded-3xl md:rounded-[2rem] p-5 sm:p-8 md:p-12 border border-slate-700/40 shadow-2xl">
+    
+    <!-- Cabecera -->
+    <div class="text-center mb-8 md:mb-10 max-w-3xl mx-auto">
+      <h2 class="text-2xl sm:text-3xl md:text-5xl text-lime-400 font-semibold uppercase tracking-wider mb-3 md:mb-4">
+        Adaptado a tu sector específico
+      </h2>
+      <p class="text-slate-100 text-base sm:text-lg md:text-xl font-medium leading-relaxed">
+        Contamos con profesionales capacitados en áreas concretas para <span class="text-lime-400">integrarse de inmediato</span> en tu flujo de trabajo sin curva de aprendizaje pesada.
+      </p>
+    </div>
+
+    <!-- Tarjetas de Industrias (3 Columnas) usando bucle -->
+    <div class="grid md:grid-cols-3 gap-4 sm:gap-6 mb-6 md:mb-8">
+      {sectores.map((item) => (
+        <div class="bg-[#0a1b1b]/90 p-5 sm:p-6 md:p-8 rounded-2xl border border-slate-700/50 flex flex-col justify-between transition hover:border-lime-400/40 shadow-lg">
+          <div class="flex flex-col items-center">
+
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-lime-400/10 flex items-center justify-center text-center text-lime-400 mb-4 border border-lime-400/20">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d={item.svgPath}></path>
+              </svg>
+            </div>
+
+            <h3 class="text-white font-bold text-xl sm:text-2xl mb-2 sm:mb-3">{item.title}</h3>
+            <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+              {item.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Pie de sección -->
+    <div class="text-center border-t border-slate-700/40 pt-5 sm:pt-6">
+      <p class="text-white font-medium text-sm sm:text-base md:text-lg">
+        Personal capacitado para <span class="text-lime-400 font-bold">empezar a producir desde el primer día</span> en tu modelo de negocio específico.
+      </p>
+    </div>
+
+  </div>
+</div>
