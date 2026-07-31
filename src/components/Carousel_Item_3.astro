@@ -1,33 +1,33 @@
 ---
 const testimonios = [
   {
-    quote: "Dejar la gestión de portales inmobiliarios y leads en manos de mi asistente me devolvió las horas que necesitaba para cerrar más ventas.",
-    author: "Carlos M.",
-    role: "Director Inmobiliario",
-    initials: "CM",
-    avatar: "https://i.pravatar.cc/150?u=elena"
+    quote: "Gracias a Ricardo, no sabia que seria tan facil, llegan clientes en automatico, solo me ocupo de atenderlos, tengo mas energia y los ingresos subieron en correlacion con los meses anteriores.",
+    name: "Carennys serrano",
+    role: "Dentista",
+    title: "",
+    img: "/Agents/Carennys serrano.jpeg"
   },
   {
-    quote: "La atención por WhatsApp y la agenda de la clínica fluyen sin errores. Cero complicaciones con bajas o seguros sociales.",
-    author: "Dra. Elena R.",
-    role: "Centro de Psicología",
-    initials: "ER",
-    avatar: "https://i.pravatar.cc/150?u=sofia"
+    quote: "Bastante feliz con las cantidad de leads que agendan tanto en ingles como español, mi equipo se encarga, Me encanta.",
+    name: "Mark Brenner",
+    role: "Agente de Bienes Raices",
+    title: "",
+    img: "/Agents/mark brenner.jpeg"
   },
   {
-    quote: "Delegar la atención al cliente y la gestión de devoluciones en mi e-commerce mejoró por completo la satisfacción de nuestros compradores.",
-    author: "Javier S.",
-    role: "Fundador de E-commerce",
-    initials: "JS",
-    avatar: "https://i.pravatar.cc/150?u=javier"
+    quote: "Un poco gracioso, me tomo 2 semanas aprender cada cosa de mi negocio y pense en delegarlo muchas veces pensando que le tomaria mucho mas a alguien externo pero los asistentes virtuales estan contentos y emocionados por trabajar, solo requirieron 1 semana.",
+    name: "Raul",
+    role: "Automatización de IA",
+    title: "",
+    img: "/Agents/Raul.jpeg"
   },
   {
-    quote: "La integración fue inmediata y sin fricciones. Ahora puedo enfocarme en liderar mi negocio sin quemarme con tareas repetitivas.",
-    author: "Sofía L.",
-    role: "Creadora de Contenido",
-    initials: "SL",
-    avatar: "https://i.pravatar.cc/150?u=carlos"
-  }
+    quote: "La silla oclos ejecutiva no deja de venderse y la tienda no para de recibir nuevos pedidos, todo fluye mejor que nunca.",
+    name: "Sebas Fuks",
+    role: "Propietario de E-comerce",
+    title: "",
+    img: "/Agents/sebas fuks.jpeg"
+  },
 ];
 ---
 
@@ -54,12 +54,11 @@ const testimonios = [
           <div class="flex items-center gap-4">
             <!-- Avatar con espacio reservado e iniciales de respaldo -->
             <div class="relative w-12 h-12 rounded-full bg-lime-400/10 border-2 border-lime-400/40 overflow-hidden flex items-center justify-center text-lime-400 shrink-0">
-              <span class="text-sm font-bold absolute">{item.initials}</span>
-              <img src={item.avatar} alt={item.author} class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'" />
+              <img src={item.img} alt={item.name} class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'" />
             </div>
             <div>
-              <p class="text-lime-400 font-bold text-lg">{item.author}</p>
-              <p class="text-slate-400 text-sm">{item.role}</p>
+              <p class="text-lime-400 font-bold text-lg">{item.name}</p>
+              <p class="text-slate-200 text-sm">{item.role}</p>
             </div>
           </div>
         </div>
