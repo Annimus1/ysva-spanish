@@ -16,7 +16,6 @@ const logoPlaceholder = "YSVA";
       <a href="#elegirnos" class="text-white font-bold text-lg">Por qué elegirnos</a>
       <a href="#comoLoHacemos" class="text-white font-bold text-lg">Cómo lo hacemos</a>
       <a href="#servicios" class="text-white font-bold text-lg">Servicios</a>
-      <a href="#testimonios" class="text-white font-bold text-lg">Testimonios</a>
       <a href="#equipo" class="text-white font-bold text-lg">Equipo</a>
     </div>
 
@@ -35,21 +34,41 @@ const logoPlaceholder = "YSVA";
 
   <!-- Menú Mobile (Desplegable) -->
   <div id="mobile-menu" class="hidden absolute top-full mt-2 left-0 w-full bg-slate-900/95 backdrop-blur-lg border border-slate-700/50 rounded-3xl p-6 flex-col gap-4 text-center md:hidden">
-    <a href="#hero" class="text-white font-bold text-lg">Inicio</a>
-    <a href="#elegirnos" class="text-white font-bold text-lg">Por qué elegirnos</a>
-    <a href="#comoLoHacemos" class="text-white font-bold text-lg">Cómo lo hacemos</a>
-    <a href="#servicios" class="text-white font-bold text-lg">Servicios</a>
-    <a href="#testimonios" class="text-white font-bold text-lg">Testimonios</a>
-    <a href="#equipo" class="text-white font-bold text-lg">Equipo</a>
-    <a href="#cta" class="bg-lime-400 text-black py-3 rounded-full font-bold">Contacto</a>
+    <a href="#hero" class="mobile-link text-white font-bold text-lg">Inicio</a>
+    <a href="#elegirnos" class="mobile-link text-white font-bold text-lg">Por qué elegirnos</a>
+    <a href="#comoLoHacemos" class="mobile-link text-white font-bold text-lg">Cómo lo hacemos</a>
+    <a href="#servicios" class="mobile-link text-white font-bold text-lg">Servicios</a>
+    <a href="#equipo" class="mobile-link text-white font-bold text-lg">Equipo</a>
+    <a href="#cta" class="mobile-link bg-lime-400 text-black py-3 rounded-full font-bold">Contacto</a>
   </div>
 </nav>
 
 <script>
+  const nav = document.querySelector('nav');
   const btn = document.getElementById('menu-btn');
   const menu = document.getElementById('mobile-menu');
-  btn?.addEventListener('click', () => {
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  // Alternar menú al presionar el botón hamburguesa
+  btn?.addEventListener('click', (e) => {
+    e.stopPropagation();
     menu?.classList.toggle('hidden');
     menu?.classList.toggle('flex');
+  });
+
+  // Cerrar al hacer clic en un enlace del menú
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+      menu?.classList.remove('flex');
+    });
+  });
+
+  // Cerrar al hacer clic fuera de la barra de navegación
+  document.addEventListener('click', (e) => {
+    if (nav && !nav.contains(e.target as Node)) {
+      menu?.classList.add('hidden');
+      menu?.classList.remove('flex');
+    }
   });
 </script>
