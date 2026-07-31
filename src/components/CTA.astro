@@ -1,4 +1,6 @@
 ---
+import Toast from "./Toast.astro";
+
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyVtbDJmlr8a-P77wEadIgc8U2pIKjqh_UOEEanKijCOjiHj94JCxJAE4f2bUlFg7BNHw/exec";
 ---
 
@@ -15,6 +17,7 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyVtbDJmlr8a-P77wEad
       </p>
 
       <!-- Formulario de Contacto / Cotización -->
+         <Toast />
       <form id="lead-form" class="bg-white p-6 rounded-3xl shadow-2xl max-w-lg space-y-4 border border-white/50">
         <div>
           <label class="block text-xs font-bold text-[#0a1b1b] uppercase mb-1">Nombre de la empresa</label>
@@ -138,14 +141,43 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyVtbDJmlr8a-P77wEad
         },
         body: JSON.stringify(formData),
       });
-      alert("¡Solicitud enviada con éxito! Nos pondremos en contacto pronto.");
+      showToast("exito");
       form.reset();
     } catch (error) {
       console.error("Error al enviar:", error);
-      alert("Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.");
+      showToast("error");
     } finally {
       submitBtn.disabled = false;
       btnText.textContent = "Solicitar Asistente Virtual";
     }
   });
+
+  function showToast(estado) {
+    const toast = document.getElementById("toast");
+    const contenido = document.getElementById("toast-info");
+
+    if (!toast || !contenido) return;
+
+    if (estado === "exito") {
+      toast.classList.add("border-green-950", "bg-green-950");
+      toast.classList.remove("border-red-950", "bg-red-950");
+
+      contenido.innerHTML = `<p>¡Solicitud enviada con éxito!</p>
+        <p>Nos pondremos en contacto pronto.</p>`;
+    } else if (estado === "error") {
+      toast.classList.add("border-red-950", "bg-red-950");
+      toast.classList.remove("border-green-950", "bg-green-950");
+
+      contenido.innerHTML = `<p>Hubo un error al enviar el formulario.</p>
+        <p>Por favor, inténtalo de nuevo.</p>`;
+    }
+
+    toast.classList.toggle("hidden");
+    toast.classList.toggle("flex");
+
+    setTimeout(() => {
+      toast.classList.add("hidden");
+      toast.classList.remove("flex");
+    }, 5000);
+  }
 </script>
