@@ -1,33 +1,49 @@
 ---
 const testimonials = [
   {
-    quote: "Dejar la gestión de portales inmobiliarios y leads en manos de mi asistente me devolvió las horas que necesitaba para cerrar más ventas.",
-    name: "Carlos M.",
-    role: "Director Inmobiliario",
-    title: "Más tiempo para cerrar ventas",
-    img: "https://i.pravatar.cc/150?u=elena"
+    quote: "Gracias a Ricardo, no sabia que seria tan facil, llegan clientes en automatico, solo me ocupo de atenderlos, tengo mas energia y los ingresos subieron en correlacion con los meses anteriores.",
+    name: "Carennys serrano",
+    role: "Dentista",
+    title: "",
+    img: "/Agents/Carennys serrano.jpeg"
   },
   {
-    quote: "La atención por WhatsApp y la agenda de la clínica fluyen sin errores. Cero complicaciones con bajas o seguros sociales.",
-    name: "Dra. Elena R.",
-    role: "Centro de Psicología",
-    title: "Gestión clínica sin errores",
-    img: "https://i.pravatar.cc/150?u=sofia"
+    quote: "Estos chicos son increibles, no dejo de recomendarlos",
+    name: "Dan",
+    role: "Propietario de E-comerce",
+    title: "",
+    img: "/Agents/Dan.jpeg"
   },
   {
-    quote: "Delegar la atención al cliente y la gestión de devoluciones en mi e-commerce mejoró por completo la satisfacción de nuestros compradores.",
-    name: "Javier S.",
-    role: "Fundador de E-commerce",
-    title: "Mejora en la satisfacción del cliente",
-    img: "https://i.pravatar.cc/150?u=javier"
+    quote: "Bastante contento con las cantidad de leads que agendan tanto en ingles como español, mi equipo se encarga, Me encanta.",
+    name: "Mark Brenner",
+    role: "Agente de Bienes Raices",
+    title: "",
+    img: "/Agents/mark brenner.jpeg"
   },
   {
-    quote: "La integración fue inmediata y sin fricciones. Ahora puedo enfocarme en liderar mi negocio sin quemarme con tareas repetitivas.",
-    name: "Sofía L.",
-    role: "Creadora de Contenido",
-    title: "Sin tareas repetitivas",
-    img: "https://i.pravatar.cc/150?u=carlos"
-  }
+    quote: "Un poco gracioso, me tomo 2 semanas aprender cada cosa de mi negocio y pense en delegarlo muchas veces pensando que le tomaria mucho mas a alguien externo pero los asistentes virtuales estan contentos y emocionados por trabajar, solo requirieron 1 semana.",
+    name: "Raul",
+    role: "Automatización de IA",
+    title: "",
+    img: "/Agents/Raul.jpeg"
+  },
+  {
+    quote: "La silla oclos ejecutiva no deja de venderse y la tienda no para de recibir nuevos pedidos, todo fluye mejor que nunca.",
+    name: "Sebas Fuks",
+    role: "Propietario de E-comerce",
+    title: "",
+    img: "/Agents/sebas fuks.jpeg"
+  },
+  {
+    quote: `Bastante contento con lo que Ben y su equipo han hecho, cada nuevo negocio requiere una persona especifica y nunca habia sido tan facil, lo consiguen con la experiencia que busco en menos de 72H 
+
+Totalmente recomendados, Gracias Ben y el equipo de yourserviceva`,
+    name: "Lorne",
+    role: "CEO",
+    title: "",
+    img: "/Agents/lorne.jpeg"
+  },
 ];
 ---
 
@@ -55,13 +71,13 @@ const testimonials = [
             <div id="test-card" class="transition-opacity duration-300">
               <div class="text-lime-400 mb-4 text-xl">★★★★★</div>
               <h3 id="test-title" class="text-white font-bold text-2xl mb-4">{testimonials[0].title}</h3>
-              <p id="test-text" class="text-slate-400 text-lg mb-8 leading-relaxed italic">"{testimonials[0].quote}"</p>
+              <p id="test-text" class="text-slate-100 text-lg mb-8 leading-relaxed italic">"{testimonials[0].quote}"</p>
               
               <div class="flex items-center gap-4">
                 <img id="test-img" src={testimonials[0].img} class="w-12 h-12 rounded-full border-2 border-lime-400 object-cover" alt="Cliente" />
                 <div>
-                  <div id="test-name" class="text-white font-bold">{testimonials[0].name}</div>
-                  <div id="test-role" class="text-slate-500 text-sm">{testimonials[0].role}</div>
+                  <div id="test-name" class="text-white font-bold text-xl">{testimonials[0].name}</div>
+                  <div id="test-role" class="text-lg text-lime-400">{testimonials[0].role}</div>
                 </div>
               </div>
             </div>
@@ -129,11 +145,51 @@ const testimonials = [
 
 <script>
   const testimonials = [
-    { quote: "Dejar la gestión de portales inmobiliarios y leads en manos de mi asistente me devolvió las horas que necesitaba para cerrar más ventas.", name: "Carlos M.", role: "Director Inmobiliario", title: "Más tiempo para cerrar ventas", img: "https://i.pravatar.cc/150?u=elena" },
-    { quote: "La atención por WhatsApp y la agenda de la clínica fluyen sin errores. Cero complicaciones con bajas o seguros sociales.", name: "Dra. Elena R.", role: "Centro de Psicología", title: "Gestión clínica sin errores", img: "https://i.pravatar.cc/150?u=sofia" },
-    { quote: "Delegar la atención al cliente y la gestión de devoluciones en mi e-commerce mejoró por completo la satisfacción de nuestros compradores.", name: "Javier S.", role: "Fundador de E-commerce", title: "Mejora en la satisfacción del cliente", img: "https://i.pravatar.cc/150?u=javier" },
-    { quote: "La integración fue inmediata y sin fricciones. Ahora puedo enfocarme en liderar mi negocio sin quemarme con tareas repetitivas.", name: "Sofía L.", role: "Creadora de Contenido", title: "Sin tareas repetitivas", img: "https://i.pravatar.cc/150?u=carlos" }
-  ];
+  {
+    quote: "Gracias a Ricardo, no sabia que seria tan facil, llegan clientes en automatico, solo me ocupo de atenderlos, tengo mas energia y los ingresos subieron en correlacion con los meses anteriores.",
+    name: "Carennys serrano",
+    role: "Dentista",
+    title: "",
+    img: "/Agents/Carennys serrano.jpeg"
+  },
+  {
+    quote: "Estos chicos son increibles, no dejo de recomendarlos",
+    name: "Dan",
+    role: "Propietario de E-comerce",
+    title: "",
+    img: "/Agents/Dan.jpeg"
+  },
+  {
+    quote: "Bastante contento con las cantidad de leads que agendan tanto en ingles como español, mi equipo se encarga, Me encanta.",
+    name: "Mark Brenner",
+    role: "Agente de Bienes Raices",
+    title: "",
+    img: "/Agents/mark brenner.jpeg"
+  },
+  {
+    quote: "Un poco gracioso, me tomo 2 semanas aprender cada cosa de mi negocio y pense en delegarlo muchas veces pensando que le tomaria mucho mas a alguien externo pero los asistentes virtuales estan contentos y emocionados por trabajar, solo requirieron 1 semana.",
+    name: "Raul",
+    role: "Automatización de IA",
+    title: "",
+    img: "/Agents/Raul.jpeg"
+  },
+  {
+    quote: "La silla oclos ejecutiva no deja de venderse y la tienda no para de recibir nuevos pedidos, todo fluye mejor que nunca.",
+    name: "Sebas Fuks",
+    role: "Propietario de E-comerce",
+    title: "",
+    img: "/Agents/sebas fuks.jpeg"
+  },
+  {
+    quote: `Bastante contento con lo que Ben y su equipo han hecho, cada nuevo negocio requiere una persona especifica y nunca habia sido tan facil, lo consiguen con la experiencia que busco en menos de 72H 
+
+Totalmente recomendados, Gracias Ben y el equipo de yourserviceva`,
+    name: "Lorne",
+    role: "CEO",
+    title: "",
+    img: "/Agents/lorne.jpeg"
+  },
+];
 
   const card = document.getElementById('test-card');
   const title = document.getElementById('test-title');
