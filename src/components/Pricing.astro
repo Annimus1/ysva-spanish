@@ -1,0 +1,80 @@
+---
+const PRICE_PER_HOUR = 3.99;
+
+const plans = [
+  { hours: 20, label: '20 horas / semana' },
+  { hours: 30, label: '30 horas / semana' },
+  { hours: 40, label: '40 horas / semana' },
+].map((plan) => ({
+  ...plan,
+  weekly: (PRICE_PER_HOUR * plan.hours).toFixed(2),
+}));
+
+const features = [
+  'Sin costes de Seguridad Social',
+  'Sin contratos de permanencia',
+  'Asistente capacitado desde el primer día',
+  'Cero costes ocultos',
+];
+---
+
+<section id="precios" class="py-20 px-6 bg-[#0a1b1b]">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-[#142e2e] text-lime-400 text-sm border border-[#1f4646] mb-4">
+        Precios
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-white">
+        Un precio simple y transparente
+      </h2>
+      <p class="text-slate-300 text-lg mt-4 max-w-2xl mx-auto">
+        Paga solo por las horas que necesitas. Sin sorpresas, sin compromisos.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+      <div class="bg-[#142e2e]/40 rounded-3xl p-8 md:p-10 border border-slate-700/50 flex flex-col justify-center">
+        <span class="text-slate-300 text-sm uppercase tracking-widest">Tarifa por hora</span>
+        <div class="flex items-end gap-2 mt-3">
+          <span class="text-6xl md:text-7xl font-bold text-lime-400">{PRICE_PER_HOUR} €</span>
+          <span class="text-slate-300 text-xl mb-2">/ hora</span>
+        </div>
+        <p class="text-slate-300 mt-4">
+          Un asistente virtual profesional trabajando para tu negocio por menos que el coste de un empleado a tiempo completo.
+        </p>
+
+        <ul class="mt-8 space-y-3">
+          {features.map((feature) => (
+            <li class="flex items-start gap-3 text-slate-200">
+              <span class="text-lime-400 font-bold mt-0.5">✓</span>
+              {feature}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="bg-[#142e2e] rounded-3xl p-8 md:p-10 border border-lime-400/40 shadow-[0_0_30px_rgba(163,230,53,0.15)] flex flex-col">
+        <h3 class="text-2xl font-bold text-white mb-6">Ejemplos según tus horas</h3>
+
+        <div class="space-y-4 flex-1">
+          {plans.map((plan) => (
+            <div class="flex items-center justify-between bg-[#0a1b1b]/60 rounded-2xl px-5 py-4 border border-slate-700/50">
+              <span class="text-slate-200 font-medium">{plan.label}</span>
+              <span class="text-white font-bold text-lg">
+                {plan.weekly} €
+                <span class="text-slate-400 text-sm font-normal">/ semana</span>
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <a
+          href="#cta"
+          class="mt-8 inline-flex items-center justify-center bg-lime-400 text-black font-bold py-4 px-8 rounded-full hover:bg-lime-300 transition duration-300 shadow-lg"
+        >
+          Contrata tu asistente virtual
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
